@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "connexion-faker"
+version = "0.1.0"
+description = "Auto-generate mocks from your Connexion API using OpenAPI"
+authors = ["Erle Carrara <carrara.erle@gmail.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+connexion = "^2.9.0"
+Faker = "^11.3.0"
+aiohttp = {version = "^3.0", optional = true}
+aiohttp_jinja2 = {version = "^1.0", optional = true}
+
+[tool.poetry.extras]
+aiohttp = ["aiohttp", "aiohttp_jinja2"]
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.2.5"
+black = "^21.12b0"
+pytest-aiohttp = "^0.3.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
