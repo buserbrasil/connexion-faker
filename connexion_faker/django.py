@@ -4,6 +4,7 @@ from connexion_faker.base import FakerMockResolver
 import random
 import time
 
+
 class DjangoFakerMockResolver(FakerMockResolver):
     def mock_operation(self, operation, *args, **kwargs):
         rand = random.random()
