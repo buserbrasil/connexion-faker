@@ -1,29 +1,18 @@
 import pytest
-from django_connexion.tests.testapp import views
-from django_connexion import DjangoApi
-from connexion_faker.django import DjangoFakerMockResolver
 
-# @pytest.fixture
-# def cli(loop, client):
-#     resolver = DjangoFakerMockResolver()
+def test_settings(settings):
+    assert settings.ROOT_URLCONF == "tests.django.testapp.urls"
+    assert settings.INSTALLED_APPS == ['tests.django.testapp']
 
-#     doc_api = DjangoApi("./tests/openapi.yml", resolver=resolver)
-#     print(client)
-
-#     return loop.run_until_complete(client)
-
-
-def test_hello_name(rf):
-    # print(rf.__dict__)
-    request = rf.get("/hello")
-    resp = request
-    resolver = DjangoFakerMockResolver()
-    doc_api = DjangoApi("./tests/openapi.yml", resolver=resolver)
-    print(doc_api)
-    print(doc_api.__dict__)
-    # assert resp.status == 200
+def test_hello_name(client):
+    resp = client.get("/hello")
+    assert resp.status_code == 200
     assert resp.json() == {"name": any_string()}
 
+def test_wrong_path(client):
+    resp = client.get("/dark")
+    assert resp.status_code == 404
+    assert 'Not Found' in resp.content.decode("utf-8")
 
 class any_string:
     def __eq__(self, other):

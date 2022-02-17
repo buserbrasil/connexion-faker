@@ -8,7 +8,6 @@ import time
 class DjangoFakerMockResolver(FakerMockResolver):
     def mock_operation(self, operation, *args, **kwargs):
         rand = random.random()
-
         if rand < self.internal_server_error_rate:
             return JsonResponse({"message": "Internal server error."}, status=500)
 
