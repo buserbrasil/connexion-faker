@@ -8,7 +8,7 @@ def cli(loop, aiohttp_client):
     resolver = AioHttpFakerMockResolver()
 
     connexion_app = connexion.AioHttpApp(
-        __name__, specification_dir="../", only_one_api=True
+        __name__, specification_dir="../../", only_one_api=True
     )
     connexion_app.add_api(
         "./tests/openapi.yml",

@@ -11,14 +11,18 @@ connexion = "^2.9.0"
 Faker = "^11.3.0"
 aiohttp = {version = "^3.0", optional = true}
 aiohttp_jinja2 = {version = "^1.0", optional = true}
+Django = {version = "^4.0.2", optional = true}
+django-connexion = {git = "https://github.com/buserbrasil/django-connexion.git", rev = "main", optional = true}
 
 [tool.poetry.extras]
 aiohttp = ["aiohttp", "aiohttp_jinja2"]
+django = ["Django", "django-connexion"]
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"
 black = "^21.12b0"
 pytest-aiohttp = "^0.3.0"
+pytest-django = "^4.5.2"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
