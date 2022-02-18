@@ -6,9 +6,9 @@ from faker import Faker
 
 
 class FakerMockResolver(MockResolver):
-    def __init__(self, internal_server_error_rate=0.0, max_sleep=1.5):
+    def __init__(self, internal_server_error_rate=0.0, max_sleep=1.5, locale=None):
         super().__init__(True)
-        self.faker = Faker()
+        self.faker = Faker(locale)
         self.internal_server_error_rate = internal_server_error_rate
         self.max_sleep = max_sleep
 
