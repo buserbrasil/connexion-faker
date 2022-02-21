@@ -14,6 +14,9 @@ class FakerMockResolver(MockResolver):
 
     def _fake(self, schema):
         if "x-fake" in schema:
+            if schema["x-fake"] == 'example':
+                return schema["example"]
+
             if schema["x-fake"].startswith("?") or schema["x-fake"].startswith("#"):
                 parts = schema["x-fake"].split(" ")
                 letters = string.ascii_letters
@@ -31,6 +34,10 @@ class FakerMockResolver(MockResolver):
 
         if "enum" in schema:
             return random.choice(schema["enum"])
+
+        if "oneOf" in schema:
+            component = random.choice(schema["oneOf"])
+            return self._fake(component)
 
         if schema["type"].lower() == "array":
             return [
