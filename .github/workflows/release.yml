@@ -40,7 +40,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           draft: false
           prerelease: steps.check-version.outputs.prerelease == 'true'
-          tag: ${{ github.sha }}
+          tag: ${{ github.ref_name }}
       - name: Publish to PyPI
         env:
           POETRY_PYPI_TOKEN_PYPI: ${{ secrets.PYPI_TOKEN }}
