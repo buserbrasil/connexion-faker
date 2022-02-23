@@ -46,7 +46,7 @@ name = "asgiref"
 version = "3.5.0"
 description = "ASGI specs, helper code, and adapters"
 category = "main"
-optional = true
+optional = false
 python-versions = ">=3.7"
 
 [package.extras]
@@ -64,7 +64,7 @@ python-versions = ">=3.6"
 name = "atomicwrites"
 version = "1.4.0"
 description = "Atomic file writes."
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 
@@ -87,7 +87,7 @@ name = "backports.zoneinfo"
 version = "0.2.1"
 description = "Backport of the standard library zoneinfo module"
 category = "main"
-optional = true
+optional = false
 python-versions = ">=3.6"
 
 [package.extras]
@@ -199,7 +199,7 @@ name = "django"
 version = "4.0.2"
 description = "A high-level Python web framework that encourages rapid development and clean, pragmatic design."
 category = "main"
-optional = true
+optional = false
 python-versions = ">=3.8"
 
 [package.dependencies]
@@ -213,23 +213,16 @@ argon2 = ["argon2-cffi (>=19.1.0)"]
 bcrypt = ["bcrypt"]
 
 [[package]]
-name = "django_connexion"
+name = "django-connexion"
 version = "0.0.1"
-description = ""
+description = "Django connexion extension"
 category = "main"
-optional = true
+optional = false
 python-versions = "*"
-develop = false
 
 [package.dependencies]
 connexion = "*"
 django = "*"
-
-[package.source]
-type = "git"
-url = "https://github.com/buserbrasil/django-connexion.git"
-reference = "main"
-resolved_reference = "4c57743fd431b2ba97b701391609c59972711c33"
 
 [[package]]
 name = "faker"
@@ -289,7 +282,7 @@ python-versions = ">=3.5"
 name = "iniconfig"
 version = "1.1.1"
 description = "iniconfig: brain-dead simple config-ini parsing"
-category = "main"
+category = "dev"
 optional = false
 python-versions = "*"
 
@@ -407,7 +400,7 @@ requests = ["requests"]
 name = "packaging"
 version = "21.3"
 description = "Core utilities for Python packages"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.6"
 
@@ -438,7 +431,7 @@ test = ["appdirs (==1.4.4)", "pytest (>=6)", "pytest-cov (>=2.7)", "pytest-mock 
 name = "pluggy"
 version = "1.0.0"
 description = "plugin and hook calling mechanisms for python"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.6"
 
@@ -450,7 +443,7 @@ testing = ["pytest", "pytest-benchmark"]
 name = "py"
 version = "1.11.0"
 description = "library with cross-python path, ini-parsing, io, code, log facilities"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 
@@ -458,7 +451,7 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 name = "pyparsing"
 version = "3.0.7"
 description = "Python parsing module"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.6"
 
@@ -480,7 +473,7 @@ six = "*"
 name = "pytest"
 version = "6.2.5"
 description = "pytest: simple powerful testing with Python"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.6"
 
@@ -513,7 +506,7 @@ pytest = "*"
 name = "pytest-django"
 version = "4.5.2"
 description = "A Django plugin for pytest."
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.5"
 
@@ -574,7 +567,7 @@ name = "sqlparse"
 version = "0.4.2"
 description = "A non-validating SQL parser."
 category = "main"
-optional = true
+optional = false
 python-versions = ">=3.5"
 
 [[package]]
@@ -589,7 +582,7 @@ python-versions = "*"
 name = "toml"
 version = "0.10.2"
 description = "Python Library for Tom's Obvious, Minimal Language"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=2.6, !=3.0.*, !=3.1.*, !=3.2.*"
 
@@ -614,7 +607,7 @@ name = "tzdata"
 version = "2021.5"
 description = "Provider of IANA time zone data"
 category = "main"
-optional = true
+optional = false
 python-versions = ">=2"
 
 [[package]]
@@ -660,7 +653,7 @@ django = ["Django", "django-connexion"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "952f6064a3f05568cc88dbe93d8bc7ec64c7462ba267ab506633e83f36f3a7bf"
+content-hash = "2322744fbcf6680e61f80f1506a243af6612ca087a875bbcb90e5cd4a7ee8f22"
 
 [metadata.files]
 aiohttp = [
@@ -811,7 +804,10 @@ django = [
     {file = "Django-4.0.2-py3-none-any.whl", hash = "sha256:996495c58bff749232426c88726d8cd38d24c94d7c1d80835aafffa9bc52985a"},
     {file = "Django-4.0.2.tar.gz", hash = "sha256:110fb58fb12eca59e072ad59fc42d771cd642dd7a2f2416582aa9da7a8ef954a"},
 ]
-django_connexion = []
+django-connexion = [
+    {file = "django_connexion-0.0.1-py3-none-any.whl", hash = "sha256:ed45493ee59dda30f9a2b11733492d9a8006bad4bc9ba934230c56aabe21b5e2"},
+    {file = "django_connexion-0.0.1.tar.gz", hash = "sha256:e86c849aa9f5dac1278e2d1408b8a50c3673603ca5b1dba46d2d37d7321293bf"},
+]
 faker = [
     {file = "Faker-11.4.0-py3-none-any.whl", hash = "sha256:c9e8557368706a094b5caf52113dd21412f8c9f06fcf00acd08dacb1cf014ed4"},
     {file = "Faker-11.4.0.tar.gz", hash = "sha256:b548a1f48f6d95b6ce57b0523c78c6cfd48fdb786267e448403f242c2678c4c8"},
