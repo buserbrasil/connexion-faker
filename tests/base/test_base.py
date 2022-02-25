@@ -8,25 +8,36 @@ def faker_resolver():
 
 @pytest.fixture
 def faker_data():
-  with open("./tests/base/swagger.yaml") as f:
+  with open("./tests/openapi.yml") as f:
     data = yaml.load(f, Loader=yaml.Loader)
   return data
 
 def test_hello_route(faker_resolver, faker_data):
   path = '/hello'
-  result = faker_resolver._fake(_get_response_schema_from_path(faker_data, path))
+  schema = _get_response_schema_from_path(faker_data, path, '200')
+  result = faker_resolver._fake(schema)
   assert result == {"name": any_string(), "last_name": 'Andreas' }
 
 def test_one_choice_route(faker_resolver, faker_data):
   path = '/one_choice'
-  result = faker_resolver._fake(_get_response_schema_from_path(faker_data, path))
+  schema = _get_response_schema_from_path(faker_data, path, '200')
+  result = faker_resolver._fake(schema)
   assert result == { "name": any_string() }
   assert result["name"] in ['ok', '2']
 
 def test_different_responses(faker_resolver, faker_data):
   path = '/different_responses'
-  result = faker_resolver._get_success_response(_get_all_responses(faker_data, path))
-  assert result == _get_all_responses(faker_data, path)["201"]
+  all_responses = _get_all_responses(faker_data, path)
+
+  status = faker_resolver._get_success_response_status(all_responses)
+  assert all_responses[status] == all_responses["201"]
+
+def test_different_responses(faker_resolver, faker_data):
+  path = '/different_responses_2'
+  all_responses = _get_all_responses(faker_data, path)
+
+  status = faker_resolver._get_success_response_status(all_responses)
+  assert status == '204'
 
 class any_string:
     def __eq__(self, other):
@@ -35,5 +46,8 @@ class any_string:
 def _get_all_responses(faker_data, path):
   return faker_data['paths'][path]['get']['responses']
 
-def _get_response_schema_from_path(faker_data, path):
-  return _get_all_responses(faker_data, path)['200']['content']['application/json']['schema']
+def _get_response_schema_from_path(faker_data, path, status):
+  response = _get_all_responses(faker_data, path)[status]
+  if 'content' in response:
+    return response['content']['application/json']['schema']
+  return None

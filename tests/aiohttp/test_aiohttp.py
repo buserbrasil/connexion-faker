@@ -23,7 +23,7 @@ def cli(loop, aiohttp_client):
 async def test_hello_name(cli):
     resp = await cli.get("/hello")
     assert resp.status == 200
-    assert await resp.json() == {"name": any_string()}
+    assert await resp.json() == {"name": any_string(), "last_name": 'Andreas' }
 
 
 class any_string:

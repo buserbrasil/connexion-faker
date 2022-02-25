@@ -19,3 +19,56 @@ paths:
                   name:
                     type: string
                     x-fake: name
+                  last_name:
+                    type: string
+                    x-fake: example
+                    example: Andreas
+  /one_choice:
+    get:
+      summary: One choice
+      responses:
+        '200':
+          description: Hello response.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - name
+                properties:
+                  name:
+                    oneOf:
+                      - type: string
+                        x-fake: example
+                        example: ok
+                      - type: string
+                        x-fake: example
+                        example: '2'
+  /different_responses:
+    get:
+      summary: Different responses
+      responses:
+        '201':
+          description: Hello response.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - name
+                properties:
+                  name:
+                    oneOf:
+                      - type: string
+                        x-fake: example
+                        example: ok
+                      - type: number
+                        x-fake: example
+                        example: 2
+
+  /different_responses_2:
+    get:
+      summary: Different responses
+      responses:
+        '204':
+          description: Hello response.
