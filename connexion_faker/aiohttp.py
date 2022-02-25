@@ -12,7 +12,11 @@ class AioHttpFakerMockResolver(FakerMockResolver):
         if rand < self.internal_server_error_rate:
             return web.json_response({"message": "Internal server error."}, status=500)
 
-        schema = operation.responses["200"]["content"]["application/json"]["schema"]
+        response = self._get_success_response(operation.responses)
+        print(operation.responses)
+        print(response)
+        print(response["content"])
+        schema = response["content"]["application/json"]["schema"]
         resp = self._fake(schema), 200
 
         time.sleep(random.uniform(0, self.max_sleep))

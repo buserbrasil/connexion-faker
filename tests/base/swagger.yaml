@@ -25,9 +25,30 @@ paths:
                     example: Andreas
   /one_choice:
     get:
-      summary: Hello
+      summary: One choice
       responses:
         '200':
+          description: Hello response.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - name
+                properties:
+                  name:
+                    oneOf:
+                      - type: string
+                        x-fake: example
+                        example: ok
+                      - type: string
+                        x-fake: example
+                        example: '2'
+  /different_responses:
+    get:
+      summary: Different responses
+      responses:
+        '201':
           description: Hello response.
           content:
             application/json:

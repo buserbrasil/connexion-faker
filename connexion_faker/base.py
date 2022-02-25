@@ -12,6 +12,12 @@ class FakerMockResolver(MockResolver):
         self.internal_server_error_rate = internal_server_error_rate
         self.max_sleep = max_sleep
 
+    def _get_success_response(self, responses):
+        success_respons_statuses = [200, 201, 202, 203, 204, 205, 206, 207, 208, 226]
+        for response_status in success_respons_statuses:
+            if str(response_status) in responses:
+                return responses[str(response_status)]
+
     def _fake(self, schema):
         if "x-fake" in schema:
             if schema["x-fake"] == 'example':

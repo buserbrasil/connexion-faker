@@ -11,7 +11,8 @@ class DjangoFakerMockResolver(FakerMockResolver):
         if rand < self.internal_server_error_rate:
             return JsonResponse({"message": "Internal server error."}, status=500)
 
-        schema = operation.responses["200"]["content"]["application/json"]["schema"]
+        response = self._get_success_response(operation.responses)
+        schema = response["content"]["application/json"]["schema"]
         resp = self._fake(schema)
 
         time.sleep(random.uniform(0, self.max_sleep))
