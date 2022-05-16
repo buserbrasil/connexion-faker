@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "connexion-faker"
-version = "0.1.18"
+version = "0.2.0"
 description = "Auto-generate mocks from your Connexion API using OpenAPI"
 authors = ["Erle Carrara <carrara.erle@gmail.com>"]
 license = "MIT"
