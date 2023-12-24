@@ -52,6 +52,7 @@ paths:
                     x-fake: name
 ```
 - Can be YAML or JSON
+
 #### AIOHTTP Resolver
 
 ```python
@@ -74,7 +75,7 @@ aiohttp_client(connexion_app.app)
 
 #### Django Resolver
 
-- Needs `django_connexion` lib (django-connexion)[https://github.com/buserbrasil/django-connexion].
+- Needs `django_connexion` lib [django-connexion](https://github.com/buserbrasil/django-connexion).
 
 ```python
 from django_connexion import DjangoApi
